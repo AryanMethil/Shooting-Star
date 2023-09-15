@@ -10,17 +10,33 @@ public class PlanetSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 randomSpawnPosition1 = new Vector3(Random.Range(-15,-7), Random.Range(-5,6),0);
-        Instantiate(planetPrefab, randomSpawnPosition1, Quaternion.identity);
+        List<Vector3> spawnLocations = new List<Vector3>();
+        while(spawnLocations.Count<4){
 
-        Vector3 randomSpawnPosition2 = new Vector3(Random.Range(-7,1), Random.Range(-5,6),0);
-        Instantiate(planetPrefab, randomSpawnPosition2, Quaternion.identity);
+            int calculateNewRandomPositionFlag = 1;
+            Vector3 randomSpawnPosition = new Vector3(0,0,0);
 
-        Vector3 randomSpawnPosition3 = new Vector3(Random.Range(1,9), Random.Range(-5,6),0);
-        Instantiate(planetPrefab, randomSpawnPosition3, Quaternion.identity);
+            while(calculateNewRandomPositionFlag==1){
 
-        Vector3 randomSpawnPosition4 = new Vector3(Random.Range(9,16), Random.Range(-5,6),0);
-        Instantiate(planetPrefab, randomSpawnPosition4, Quaternion.identity);
+                randomSpawnPosition = new Vector3(Random.Range(-15,16), Random.Range(-5,6),0);
+                calculateNewRandomPositionFlag=0;
+
+                if(spawnLocations.Count>1){
+
+                    foreach(Vector3 spawnLocation in spawnLocations){
+
+                        if(Vector3.Distance(spawnLocation, randomSpawnPosition)<2){
+
+                            calculateNewRandomPositionFlag=1;
+                            break;
+
+                        }
+                    }
+                }
+            }
+            Instantiate(planetPrefab, randomSpawnPosition, Quaternion.identity);
+            spawnLocations.Add(randomSpawnPosition);
+        }
     }
 
     // Update is called once per frame
