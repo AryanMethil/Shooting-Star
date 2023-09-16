@@ -8,6 +8,7 @@ public class MovingBall : MonoBehaviour
     Vector3 displacement = new Vector3(0.5f,0,0);
     public float radiusOfView = 5.0f;
     public GameObject text;
+    public GameObject bulletPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +44,5 @@ public class MovingBall : MonoBehaviour
             }
             
         }
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = new Vector2(mousePosition.x - transform.GetChild(1).gameObject.transform.position.x, mousePosition.y - transform.GetChild(1).gameObject.transform.position.y);
-        transform.up = direction;
-
     }
 }
