@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     private Vector3 mousePos;
     public GameObject bulletPrefab;
     public Transform bulletTransform;
+    public GameObject text;
     public bool canFire = true;
     private float timer;
     public float timeBetweenFiring = 0.3f;
@@ -33,9 +34,12 @@ public class Shooting : MonoBehaviour
                 timer=0;
             }
         }
-        if(Input.GetMouseButton(0) && canFire){
+        if(Input.GetMouseButton(0) && canFire && int.Parse(text.GetComponent<UnityEngine.UI.Text>().text.Substring(6))>0){
             canFire = false;
             Instantiate(bulletPrefab, bulletTransform.position, Quaternion.identity);
+            int curr_ammo = int.Parse(text.GetComponent<UnityEngine.UI.Text>().text.Substring(6));
+            int updated_ammo = curr_ammo-1;
+            text.GetComponent<UnityEngine.UI.Text>().text = "Ammo: "+updated_ammo.ToString();
         }
     }
 }

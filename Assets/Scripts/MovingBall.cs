@@ -33,7 +33,7 @@ public class MovingBall : MonoBehaviour
                         Object.Destroy(obj.transform.GetChild(1).gameObject);
                         obj.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = new Color(255,255,255);
                         int curr_ammo = int.Parse(text.GetComponent<UnityEngine.UI.Text>().text.Substring(6));
-                        int updated_ammo = curr_ammo+50;
+                        int updated_ammo = curr_ammo+10;
                         text.GetComponent<UnityEngine.UI.Text>().text = "Ammo: "+updated_ammo.ToString();
                         break;
                     }
