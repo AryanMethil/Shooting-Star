@@ -24,7 +24,6 @@ public class MovingEnemy : MonoBehaviour
         if(isSlowed==true){
             slowedTimer+=Time.deltaTime;
             if(slowedTimer>=slowedDuration){
-                Debug.Log(slowedDuration);
                 isSlowed=false;
                 slowedTimer=0.0f;
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -33,7 +32,8 @@ public class MovingEnemy : MonoBehaviour
             
         }
         else{
-            transform.localPosition+=(displacement*speed*Time.deltaTime);
+            Vector3 direction = (goodGuy.transform.position - transform.localPosition).normalized;
+            transform.localPosition+=(direction*speed*Time.deltaTime);
         }
         
         
@@ -41,8 +41,11 @@ public class MovingEnemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        isSlowed=true;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        
+        if(col.gameObject.name=="Bullet(Clone)"){
+            isSlowed=true;
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        }
     }
 }
