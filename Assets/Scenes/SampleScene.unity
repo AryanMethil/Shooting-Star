@@ -592,7 +592,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.22001563, g: 0.98039216, b: 0.039215706, a: 1}
   m_FlipX: 0
@@ -767,6 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 7919434937623402702, guid: a2a696e52f9f4414a806410fda6715d4, type: 3}
+  minPlanetSpawnDistance: 8
 --- !u!4 &848941571
 Transform:
   m_ObjectHideFlags: 0
@@ -1764,6 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 265813750}
+  startingAmmo: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

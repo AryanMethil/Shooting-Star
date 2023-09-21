@@ -6,6 +6,7 @@ using UnityEditor;
 public class PlanetSpawnerScript : MonoBehaviour
 {
     public GameObject planetPrefab;
+    public float minPlanetSpawnDistance = 8.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class PlanetSpawnerScript : MonoBehaviour
 
                     foreach(Vector3 spawnLocation in spawnLocations){
 
-                        if(Vector3.Distance(spawnLocation, randomSpawnPosition)<2){
+                        if(Vector3.Distance(spawnLocation, randomSpawnPosition)<minPlanetSpawnDistance){
 
                             calculateNewRandomPositionFlag=1;
                             break;
