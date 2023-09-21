@@ -15,6 +15,7 @@ public class MovingEnemy : MonoBehaviour
     public bool isSlowed = false;
     public TMPro.TextMeshProUGUI gameOverText;
     public Button restartButton;
+    
 
     void Start()
     {
@@ -47,14 +48,17 @@ public class MovingEnemy : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         
-        if(col.gameObject.name=="Bullet(Clone)"){
+        if(col.gameObject.name=="Bullet(Clone)"|| col.gameObject.name == "Star" ||col.gameObject.name=="Star 1(Clone)"){
             isSlowed=true;
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         }
         else{
-            GameObject.FindGameObjectWithTag("GameOverFlag").GetComponent<GameOverFlagScript>().gameOverFlag = true;
-            GameOver();
+            
+                GameObject.FindGameObjectWithTag("GameOverFlag").GetComponent<GameOverFlagScript>().gameOverFlag = true;
+                GameOver();
+            
+            
         }
     }
 
