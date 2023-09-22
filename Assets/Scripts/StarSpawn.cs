@@ -38,7 +38,6 @@ public class StarSpawn : MonoBehaviour
             prevPosition = nextPosition;
             Vector3 spawnPosition = new Vector3(nextPosition.x, nextPosition.y, 0f);
             currentCuboid = Instantiate(cuboidPrefab, spawnPosition, Quaternion.identity);
-           // Debug.Log(" Position" + cuboidPrefab.transform.localPosition.x + "next" + nextPosition.x);
             if (alt % 2 != 0)
             {
                 nextPosition.y = initialPosition.y+1.3f;

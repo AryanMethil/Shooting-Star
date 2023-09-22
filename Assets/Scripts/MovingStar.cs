@@ -34,7 +34,7 @@ public class MovingStar : MonoBehaviour
             if (traveledDistance >= moveDistance*d)
             {
                 transform.gameObject.SetActive(false);
-                Debug.Log("Spawn called " + moveDistance+ "traveled distance"+traveledDistance);
+              //  Debug.Log("Spawn called " + moveDistance+ "traveled distance"+traveledDistance);
                 d++;
             }
 

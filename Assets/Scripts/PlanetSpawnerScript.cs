@@ -37,6 +37,10 @@ public class PlanetSpawnerScript : MonoBehaviour
             }
             Instantiate(planetPrefab, randomSpawnPosition, Quaternion.identity);
             spawnLocations.Add(randomSpawnPosition);
+            foreach (Vector3 location in spawnLocations)
+            {
+                Debug.Log("Plant position"+location);
+            }
         }
     }
 
